@@ -19,13 +19,14 @@ def read_item(item_id: int, q: Optional[str] = None):
 
 @app.post("/predict")
 def make_predictions(LdataModel:list):
+
    rta={}
    model = load("assets/modelo.joblib")
 
    i=1
    for x in LdataModel:
       df = pd.DataFrame(x, columns=x.keys(), index=[0])
-      df.columns = ['Serial No.','GRE Score','TOEFL Score','University Rating','SOP',"LOR",'CGPA','Research','Admission Points']
+      df.columns = ['text']
       result = model.predict(df)
       rta[i]=result[0]
       i+=1 
