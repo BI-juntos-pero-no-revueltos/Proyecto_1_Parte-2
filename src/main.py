@@ -32,6 +32,7 @@ def make_predictions(LdataModel:list):
       i+=1 
    return rta
 
+'''
 @app.post("/train")
 def train_model(LdataModel:list):
    rta={}
@@ -52,3 +53,4 @@ def train_model(LdataModel:list):
 
    joblib.dump(model,"assets/modelo.joblib")
    return {"R^2": r2, "RMSE": RMSE}
+'''
