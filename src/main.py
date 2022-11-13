@@ -3,13 +3,7 @@ from fastapi import FastAPI
 from joblib import load
 import pandas as pd
 from sklearn.metrics import mean_squared_error as mse
-import re
-from nltk.stem import WordNetLemmatizer
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.feature_extraction.text import TfidfTransformer
 import nltk
-nltk.download('stopwords')
-from nltk.corpus import stopwords
 from src.Limpieza import Limpieza
 
 app = FastAPI()
@@ -33,6 +27,8 @@ def make_predictions(LdataModel:list):
    df['text'] = df['text'].apply(Limpieza)
    result = model.predict(df['text']) 
  
+   print(result)
+
    return rta
 
 

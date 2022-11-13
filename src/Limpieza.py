@@ -1,13 +1,5 @@
 import re
-from sklearn.base import BaseEstimator
 from nltk.stem import WordNetLemmatizer
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.feature_extraction.text import TfidfTransformer
-import nltk
-from sklearn.datasets import load_files
-nltk.download('stopwords')
-from nltk.corpus import stopwords
-
 
 def Limpieza(text):
     documents = []
