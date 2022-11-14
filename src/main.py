@@ -26,8 +26,11 @@ def make_predictions(LdataModel:list):
    df = pd.DataFrame(LdataModel)
    df['text'] = df['text'].apply(Limpieza)
    result = model.predict(df['text']) 
- 
-   print(result)
+
+   aux=result.tolist()
+
+   for x in range(0,len(aux)):
+      rta["text-"+str(x)]=aux[x]
 
    return rta
 
