@@ -8,15 +8,6 @@ from src.Limpieza import Limpieza
 
 app = FastAPI()
 
-@app.get("/")
-def read_root():
-   return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-   return {"item_id": item_id, "q": q}
-
 @app.post("/predict")
 def make_predictions(LdataModel:list):
 
@@ -30,8 +21,10 @@ def make_predictions(LdataModel:list):
    aux=result.tolist()
 
    for x in range(0,len(aux)):
-      rta["text-"+str(x)]=aux[x]
-
+      if aux[x]== 0:
+         rta["text-"+str(x)]="non-suicide"
+      else:
+         rta["text-"+str(x)]="suicide"
    return rta
 
 
